@@ -1,1 +1,3 @@
-console.log('Hello word')
+
+
+const socket = io();
