@@ -14,8 +14,8 @@ socket.on('connect', () => {
 
     lblOffline.style.display = 'none';
     lblOnline.style.display  = '';
-
 });
+
 
 socket.on('disconnect', () => {
     console.log('Disconnected of the server');
@@ -24,7 +24,13 @@ socket.on('disconnect', () => {
     lblOffline.style.display = '';
 });
 
-btnSend.addEventListener( 'click', () => {
+
+socket.on('sent-message', ( payload ) => {
+    console.log( payload );
+});
+
+
+btnSend.addEventListener('click', () => {
     const message = textMessage.value;
     const payload = {
         message,

@@ -38,14 +38,14 @@ class Server {
 
     sockets() {
         this.io.on('connection', socket => {
-            console.log('Client connected', socket.id );
+            // console.log('Client connected', socket.id );
             
             socket.on('disconnect', () => {
-                console.log('Client discconected', socket.id);
+                // console.log('Client discconected', socket.id);
             });
 
             socket.on('send-message', ( payload ) => {
-                console.log( payload );
+                this.io.emit('sent-message', payload );
             });
         });
     }
