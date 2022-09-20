@@ -44,8 +44,12 @@ class Server {
                 // console.log('Client discconected', socket.id);
             });
 
-            socket.on('send-message', ( payload ) => {
-                this.io.emit('sent-message', payload );
+            socket.on('send-message', ( payload, callback ) => {
+                
+                const id = 123456;
+                callback(id);
+                // this.io.emit('sent-message', payload );
+
             });
         });
     }

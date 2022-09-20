@@ -35,12 +35,14 @@ btnSend.addEventListener('click', () => {
     const payload = {
         message,
         id: '@#$',
-        date: new Date().getTime(),
-
+        date: new Date().getTime()
     }
     
-    socket.emit('send-message', payload);
-})
+    socket.emit('send-message', payload, ( id ) => {
+        console.log('Since the server', id);
+    });
+
+});
 
 
 
