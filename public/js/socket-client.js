@@ -1,7 +1,9 @@
 // Referencs HTLM
 
-const lblOnline  = document.querySelector('#lblOnline');
-const lblOffline = document.querySelector('#lblOffline');
+const lblOnline   = document.querySelector('#lblOnline');
+const lblOffline  = document.querySelector('#lblOffline');
+const textMessage = document.querySelector('#textMessage')
+const btnSend     = document.querySelector('#btnSend')
 
 const socket = io();
 
@@ -20,4 +22,19 @@ socket.on('disconnect', () => {
 
     lblOnline.style.display  = 'none';
     lblOffline.style.display = '';
+});
+
+btnSend.addEventListener( 'click', () => {
+    const message = textMessage.value;
+    const payload = {
+        message,
+        id: '@#$',
+        date: new Date().getTime(),
+
+    }
+    
+    socket.emit('send-message', payload);
 })
+
+
+
